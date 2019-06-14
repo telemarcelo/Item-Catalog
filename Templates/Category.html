@@ -1,0 +1,23 @@
+<div class="body">	
+	<div class="greyBox">
+		<h2>Categories</h2>
+		{% for cat in cats %}
+			<a href= {{cat.name}}>
+				<p class="a">{{cat.name}}</p>
+			</a>
+		{% endfor %}
+	</div>
+	<div class="greyBox">
+		<h2>{{category}} ({{items|length}} items)</h2>
+		{% for item in items %}
+			<a href= {{category+"/"+item.name}}>
+				<p class="a">{{item.name}}</p>
+			</a>
+		{% endfor %}
+	</div>
+</div>
+
+<style>
+  .body{display:inline-flex; margin:30px}
+  .greyBox{padding:30px; margin:10px; border-style:solid; border-width: 1px; background-color: lightgrey}
+</style>

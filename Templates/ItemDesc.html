@@ -1,0 +1,15 @@
+<div class="body">
+  <div class="greyBox">
+    <h2>{{item.name}}</h2>
+      <div class="greyBox">{{item.description}}</div>  
+      {% if isAuthor: %}
+        <a href="/editItem/{{item.category.name}}/{{item.name}}">Edit<a> | 
+        <a href="/deleteItem/{{item.category.name}}/{{item.name}}">Delete<a>
+      {% endif %}
+  </div>
+</div>
+
+<style>
+  .body{display:inline-flex; margin:30px}
+  .greyBox{padding:30px; margin:10px; border-style:solid; border-width: 1px; background-color: lightgrey}
+</style>

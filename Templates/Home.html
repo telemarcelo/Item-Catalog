@@ -1,0 +1,22 @@
+<div class="body">
+  <div class="greyBox">
+    <h2>Categories</h2>
+    {% for cat in cats %}
+      <p><a href= {{"categories/"+cat.name}}>{{cat.name}}</a></p>
+    {% endfor %}
+  </div>
+  <div class="greyBox">
+    {% if logged: %}
+      <a id="newItem" href= "\newItem">New Item</a>
+    {% endif %}
+    <h2>Latest Items</h2>
+    {% for item in items %}
+      <p>
+        <a href= "{{"/categories/"+item.category.name+"/"+item.name}}">{{item.name}}</a>
+        <span>({{item.category.name}})</span>
+      </p>
+    {% endfor %}
+  </div>
+</div>
+  
+

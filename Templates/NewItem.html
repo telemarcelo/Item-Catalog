@@ -1,0 +1,26 @@
+<div class="body">
+  <div class="greyBox">
+    <form action="/newItem" method="post">
+      <h2>Name</h2>
+      <input  required type = "text"
+                       name = "name"
+                       value = "" / required=""></input><br>
+      <h2>Description</h2>
+      <textarea required name = "description"
+                        rows = "10"
+                        cols = "80" required=""></textarea><br>
+      <h2>Category</h2>
+      <select name = "category">
+        {% for cat in cats %}
+          <option  value={{cat.name}}>{{cat.name}}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Add Item">
+    </form>
+  </div>
+</div>
+
+<style>
+  .body{display:inline-flex; margin:30px}
+  .greyBox{padding:30px; margin:10px; border-style:solid; border-width: 1px; background-color: lightgrey}
+</style>

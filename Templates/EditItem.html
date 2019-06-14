@@ -1,0 +1,30 @@
+<div class="body">
+  <div class="greyBox">
+    <form action="/editItem/{{item.category.name}}/{{item.name}}" method="POST">
+      <h2>Name</h2>
+      <input  required type = "text"
+                       name = "name"
+                       value = "{{item.name}}" /></input><br>
+      <h2>Description</h2>
+      <textarea required name = "description"
+                        rows = "10"
+                        cols = "80" >{{item.description}}</textarea><br>  
+      <h2>Category</h2>
+      <select name = "category" value={{item.category.name}}>
+        {% for cat in cats %}
+          {% if item.category.name == cat.name %}
+            <option  value={{cat.name}} selected>{{cat.name}}</option>
+          {% else %}
+            <option  value={{cat.name}}>{{cat.name}}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <input type="submit" value="Save Item">
+    </form>
+  </div>
+</div>
+
+<style>
+  .body{display:inline-flex; margin:30px}
+  .greyBox{padding:30px; margin:5px; border-style:solid; border-width: 1px; background-color: lightgrey}
+</style>

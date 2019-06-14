@@ -1,0 +1,13 @@
+<div class="body">
+  <div class="greyBox">
+    <form action="/deleteItem/{{catName}}/{{itemName}}" method="POST">
+      <h2>Delete Item</h2>
+      <h2>Are you sure you want to delete?</h2>
+      <input type="submit" value="Delete">
+    </form>
+</div>
+
+<style>
+  .body{display:inline-flex; margin:30px}
+  .greyBox{padding:30px; margin:10px; border-style:solid; border-width: 1px; background-color: lightgrey}
+</style>

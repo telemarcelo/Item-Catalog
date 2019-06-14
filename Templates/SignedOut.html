@@ -1,0 +1,120 @@
+<html>
+<meta name="google-signin-client_id" content="{{CLIENT_ID}}">	
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="//apis.google.com/js/platform.js?onload=start" async defer> </script>
+</head>
+
+<body>
+  <header>
+    <div class="left"><h1><a href="/" style="text-decoration:none; color:white">
+      Item Catalog</a></h1></div>
+  	<button class="right" onclick="signIn()">Google Sign In</button>
+  </header> 
+  {{body}}
+</body>
+
+<style>
+*{
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+header{
+    display: inline-block;
+    width:100%;
+    background-color:navy;
+    color:white;
+}
+.body{
+  display:inline-flex; 
+  margin:30px
+}
+  
+.greyBox{
+  padding:30px; 
+  margin:10px; 
+  border-style:solid; 
+  border-width: 1px; 
+  background-color: lightgrey
+}
+
+.left{
+  float:left;
+  margin-left:20px;
+}
+
+.right{
+  float:right;
+  padding: 10px;
+  margin:20px;
+}
+
+/**
+  .body{
+    margin-left:5%;
+    margin-right:5%;
+    display: inline-block;
+    width:90%;
+    background-color:#E0E0E0;
+    color:navy;
+    line-height: .6;
+  }
+
+  .left{
+    float:left;
+    padding-left: 50px;
+  }
+  #result, #SignIn, #SignOut{
+    float:right;
+    padding: 10px;
+    margin:10px;
+  }
+  #result{
+    display:inline-flex;
+  }
+  
+
+  #graylics {
+    color: gray;  
+    font-style: italic;
+  }
+  #newItem{
+    color:red;
+  }
+  a{
+    color:red:;
+  }
+  .a{
+    color:red;
+  }
+  .items{
+    padding-top:20px
+  }*/
+</style>
+
+<script>
+  function start() {
+    console.log("start");
+    gapi.load('auth2', function() {auth2 = gapi.auth2.init({client_id: '{{CLIENT_ID}}',});}); 
+  }
+
+  function signIn(){
+    console.log("signIn");
+    auth2.grantOfflineAccess().then(signInCallback);
+  }
+
+  function signInCallback(googleUser) {if (googleUser['code']) {
+    console.log("signInCallback");
+    $.ajax({
+    type: 'POST',
+    url: '/gconnect?state={{STATE}}',
+    processData: false,
+    data: googleUser['code'],
+    contentType: 'application/octet-stream; charset=utf-8',
+    success: function(result) {
+        if (result) {window.location.reload();}      
+      }
+    });}}
+
+</script>
+</html>

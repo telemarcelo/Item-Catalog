@@ -20,7 +20,7 @@ from pprint import pprint
 app = Flask(__name__)
 flush = False
 engine = create_engine(
-    'sqlite:///ItemCatalog.db', connect_args={'check_same_thread': False})
+    'postgresql:///ItemCatalog.db', connect_args={'check_same_thread': False})
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
